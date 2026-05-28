@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial Ketangkasan Digital - Waspada Digital</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/tutorial.css">
+  <script src="../js/components.js"></script>
+</head>
+<body>
+  <div class="bg-decorations"></div>
+
+  <header id="app-header"></header>
+
+  <main class="container main-content">
+    <div class="tutorial-card text-center">
+      
+      <!-- Step Indicators -->
+      <div class="step-dots">
+        <div id="dot-1" class="dot active"></div>
+        <div id="dot-2" class="dot"></div>
+        <div id="dot-3" class="dot"></div>
+      </div>
+
+      <!-- Step 1 Content -->
+      <div id="step-1" class="tutorial-step active">
+        <div class="tutorial-content">
+          <div class="tutorial-text">
+            <h2>Langkah 1: Pesan Masuk ✉️</h2>
+            <p>
+              Kamu akan diperlihatkan beberapa pesan masuk tiruan (mock inbox) seperti SMS, email, atau WhatsApp di layar simulasi utama.
+            </p>
+            <p>
+              Analisis pengirimnya, isinya, serta link tautan di dalamnya dengan teliti!
+            </p>
+          </div>
+          <div class="tutorial-illustration">
+            <span style="font-size: 8rem; filter: drop-shadow(0 10px 15px rgba(2,132,199,0.15));">✉️</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 Content -->
+      <div id="step-2" class="tutorial-step">
+        <div class="tutorial-content">
+          <div class="tutorial-text">
+            <h2>Langkah 2: Periksa Clue 🔍</h2>
+            <p>
+              Gunakan kaca pembesar kamu untuk mencari kejanggalan dalam pesan. 
+            </p>
+            <p>
+              Apakah alamat emailnya aneh? Apakah bahasanya memaksa/mengancam? Atau isinya menawarkan hadiah tanpa sebab?
+            </p>
+          </div>
+          <div class="tutorial-illustration">
+            <span style="font-size: 8rem; filter: drop-shadow(0 10px 15px rgba(2,132,199,0.15));">🔍</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 Content -->
+      <div id="step-3" class="tutorial-step">
+        <div class="tutorial-content">
+          <div class="tutorial-text">
+            <h2>Langkah 3: Tentukan Pilihan! ✅🚨</h2>
+            <p>
+              Tekan tombol <b>AMAN</b> jika menurutmu pesan itu asli dari pihak resmi.
+            </p>
+            <p>
+              Tekan tombol <b>BAHAYA</b> jika menurutmu pesan itu adalah penipuan (phishing). Hati-hati ya, jangan sampai terkecoh!
+            </p>
+          </div>
+          <div class="tutorial-illustration">
+            <span style="font-size: 8rem; filter: drop-shadow(0 10px 15px rgba(2,132,199,0.15));">🎮</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Speech Tips from Robot Mascot -->
+      <div class="mascot-row mt-6">
+        <div class="mascot-avatar">🛡️</div>
+        <div class="mascot-speech-bubble text-left">
+          <strong>Tips dari Robot Perisai:</strong><br>
+          "Ingat ya, jangan pernah memberikan kode sandi (PIN), password, atau kode rahasia (OTP) kepada siapa pun!"
+        </div>
+      </div>
+
+      <!-- Tutorial Actions -->
+      <div class="tutorial-navigation">
+        <button id="tutorial-prev-btn" class="btn btn-outline" style="visibility: hidden;">
+          ← Kembali
+        </button>
+        <button id="skip-tutorial-btn" class="btn btn-outline">
+          Lewati Tutorial
+        </button>
+        <button id="tutorial-next-btn" class="btn btn-primary">
+          Lanjut! →
+        </button>
+        <button id="tutorial-finish-btn" class="btn btn-secondary" style="display: none;">
+          Ayo Mulai! 🚀
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="app-footer"></footer>
+
+  <script>
+    let step = 1;
+
+    const prevBtn = document.getElementById('tutorial-prev-btn');
+    const nextBtn = document.getElementById('tutorial-next-btn');
+    const finishBtn = document.getElementById('tutorial-finish-btn');
+    const skipBtn = document.getElementById('skip-tutorial-btn');
+
+    function updateUI() {
+      // Toggle steps active class
+      document.querySelectorAll('.tutorial-step').forEach(s => s.classList.remove('active'));
+      document.getElementById(`step-${step}`).classList.add('active');
+
+      // Toggle dot active class
+      document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+      document.getElementById(`dot-${step}`).classList.add('active');
+
+      // Handle buttons
+      if (step === 1) {
+        prevBtn.style.visibility = 'hidden';
+        nextBtn.style.display = 'inline-flex';
+        finishBtn.style.display = 'none';
+      } else if (step === 2) {
+        prevBtn.style.visibility = 'visible';
+        nextBtn.style.display = 'inline-flex';
+        finishBtn.style.display = 'none';
+      } else if (step === 3) {
+        prevBtn.style.visibility = 'visible';
+        nextBtn.style.display = 'none';
+        finishBtn.style.display = 'inline-flex';
+      }
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (step > 1) {
+        step--;
+        updateUI();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (step < 3) {
+        step++;
+        updateUI();
+      }
+    });
+
+    function startSimulation() {
+      window.location.href = 'gameplay.html';
+    }
+
+    finishBtn.addEventListener('click', startSimulation);
+    skipBtn.addEventListener('click', startSimulation);
+  </script>
+</body>
+</html>

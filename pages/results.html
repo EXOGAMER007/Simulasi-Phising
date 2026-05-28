@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Hasil - Waspada Digital</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/results.css">
+  <script src="../js/components.js"></script>
+</head>
+<body>
+  <div class="bg-decorations"></div>
+
+  <header id="app-header"></header>
+
+  <main class="container main-content" id="results-screen">
+    
+    <div class="card results-card">
+      
+      <!-- Glorious Golden Star Badge -->
+      <div class="trophy-badge-wrapper">
+        <div class="badge-glow"></div>
+        <div class="badge-3d" id="results-badge">🛡️</div>
+      </div>
+
+      <h2 class="predicate-title" id="results-predicate">
+        Penjaga Digital Keluarga 🟢
+      </h2>
+      <p class="predicate-desc" id="results-predicate-desc">
+        Sedang menganalisis hasil ketangkasan kamu...
+      </p>
+
+      <!-- Circular Chart Progress -->
+      <div class="summary-circle-container">
+        <div class="summary-circle" id="results-progress-circle">
+          <div class="summary-circle-inner">
+            <span class="summary-circle-val" id="results-circle-val">0/9</span>
+            <span class="summary-circle-lbl" id="results-circle-lbl">Benar (0%)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="result-stats-row">
+        <div class="stat-box">
+          <div class="stat-value" id="stat-coins">🌟 0</div>
+          <div class="stat-label">Total Koin Didapat</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">3 Tingkat</div>
+          <div class="stat-label">Tingkat Diselesaikan</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-hints">💡 0 Kali</div>
+          <div class="stat-label">Bantuan Digunakan</div>
+        </div>
+      </div>
+
+      <!-- Educational Safety Tips -->
+      <div class="tips-card">
+        <h4>🛡️ 3 Tips Keamanan Utama untuk Diingat:</h4>
+        <ul class="tips-list">
+          <li><b>Periksa Pengirim:</b> Selalu perhatikan e-mail pengirim atau nomor WA. Domain resmi instansi harus berakhiran benar (misal: <i>.co.id</i> atau <i>.go.id</i>).</li>
+          <li><b>Jangan Asal Klik:</b> Link mencurigakan dengan domain gratisan (.xyz, .net, .info) adalah jebakan. Jangan pernah klik atau isi formulir tersebut!</li>
+          <li><b>PIN/OTP Rahasia:</b> Kata sandi, PIN, dan Kode OTP adalah kunci pribadi Anda. Tidak boleh dibagikan kepada siapa pun, sekalipun mengaku petugas desa!</li>
+        </ul>
+      </div>
+
+      <!-- Result actions -->
+      <div class="results-actions">
+        <button id="restart-btn" class="btn btn-secondary btn-large">
+          🔄 Main Lagi (Bergantian)
+        </button>
+        <button id="view-details-btn" class="btn btn-outline btn-large">
+          📋 Detail Kinerja Jawaban
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer id="app-footer"></footer>
+
+  <!-- SCRIPTS IMPORT -->
+  <script src="../js/scenarios.js"></script>
+  <script src="../js/results.js"></script>
+</body>
+</html>

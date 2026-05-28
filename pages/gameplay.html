@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulasi Ketangkasan - Waspada Digital</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/gameplay.css">
+  <script src="../js/components.js"></script>
+</head>
+<body>
+  <div class="bg-decorations"></div>
+
+  <header id="app-header"></header>
+
+  <main class="container main-content">
+    <div class="inbox-card-container">
+      
+      <!-- Game Top Information -->
+      <div class="game-top-bar">
+        <div class="level-indicator" id="level-title">
+          Tingkat 1: Modus Umum 🎮
+        </div>
+        <div class="flex-center" style="gap: 12px;">
+          <span id="progress-text" style="font-size: 0.9rem; font-weight: 600; color: var(--color-text-muted);">
+            Soal 1 dari 9
+          </span>
+          <div class="game-progress-bar-outer">
+            <div class="game-progress-bar-inner" id="progress-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clue / Hint Card -->
+      <div class="hint-card" id="hint-card">
+        <div class="hint-header">
+          <span>💡</span> Bantuan Robot Perisai
+        </div>
+        <div class="hint-body" id="hint-body">
+          Loading hint...
+        </div>
+      </div>
+
+      <!-- The Mock Email / Message Inbox Frame -->
+      <div class="inbox-card">
+        <div class="inbox-header">
+          <div class="inbox-sender-row">
+            <div class="sender-avatar" id="inbox-avatar">🏦</div>
+            <div class="sender-details">
+              <div class="sender-name-line">
+                <span class="sender-name" id="inbox-sender-name">Bank BRI Resmi</span>
+                <span class="email-time" id="inbox-time">10:32</span>
+              </div>
+              <div class="sender-address" id="inbox-sender-address">
+                &lt;bri-verifikasi@info-palsu.com&gt;
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inbox-subject" id="inbox-subject">
+          PENTING: Akun Rekening BRI Anda Diblokir!
+        </div>
+        <div class="inbox-body" id="inbox-body">
+          Loading email body...
+        </div>
+      </div>
+
+      <!-- User Answer Choice Buttons -->
+      <div class="gameplay-actions">
+        <button id="btn-aman" class="btn btn-game-choice btn-game-aman">
+          ✅ AMAN (Bukan Penipuan)
+        </button>
+        <button id="btn-bahaya" class="btn btn-game-choice btn-game-bahaya">
+          🚨 BAHAYA (Ini Penipuan!)
+        </button>
+      </div>
+
+      <!-- Help/Hint button footer -->
+      <div class="game-bottom-navigation">
+        <button id="hint-trigger" class="hint-trigger-btn">
+          <span>💡</span> <span id="hint-trigger-text">Butuh Petunjuk? (Bantuan)</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- MODAL: ANSWERS FEEDBACK (BENAR / SALAH) -->
+  <div id="feedback-modal" class="modal-overlay">
+    <div class="modal-card">
+      <span class="modal-icon" id="feedback-icon">✅</span>
+      <h2 class="modal-title" id="feedback-title">Tepat Sekali! Hebat!</h2>
+      
+      <div>
+        <span class="modal-reward" id="feedback-reward-label">🌟 +10 Koin!</span>
+      </div>
+
+      <div class="modal-body" id="feedback-explanation">
+        Loading explanation...
+      </div>
+
+      <button id="feedback-next-btn" class="btn btn-primary btn-full">
+        Lanjut ke Pesan Berikutnya ➔
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL: LEVEL TRANSITION (NAIK TINGKAT) -->
+  <div id="level-transition-modal" class="modal-overlay">
+    <div class="modal-card" style="border-color: var(--color-primary);">
+      <div class="star-rating" id="stars-rating">⭐ ⭐ ⭐</div>
+      <h2 class="modal-title" id="transition-level-title" style="color: var(--color-primary);">
+        Tingkat 1 Selesai! 🎉
+      </h2>
+      
+      <div class="modal-body text-center" id="transition-message" style="border: none; background: none; font-size: 1.1rem;">
+        Selamat! Kamu sudah menyelesaikan tantangan di <b>Tingkat 1: Modus Umum</b>.<br><br>
+        Persiapkan dirimu, selanjutnya kamu akan naik ke <b>Tingkat 2: Berkedok Resmi</b> dengan tingkat kesulitan yang lebih cerdik!
+      </div>
+
+      <button id="level-transition-btn" class="btn btn-secondary btn-full">
+        Lanjut ke Tingkat 2 ➔
+      </button>
+    </div>
+  </div>
+
+  <footer id="app-footer"></footer>
+
+  <!-- SCRIPTS IMPORT -->
+  <script src="../js/scenarios.js"></script>
+  <script src="../js/gameplay.js"></script>
+</body>
+</html>

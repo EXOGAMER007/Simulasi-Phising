@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waspada Digital - Ujian Ketangkasan & Simulasi Phishing Keluarga</title>
+  <meta name="description" content="Aplikasi web simulasi ujian phishing yang interaktif, menyenangkan, dan family-friendly untuk menguji ketangkasan warga desa dalam mengenali penipuan online. Dibuat khusus untuk Dusun Teluk Lombok.">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <script src="js/components.js"></script>
+</head>
+<body>
+  <div class="bg-decorations"></div>
+
+  <header id="app-header"></header>
+
+  <main class="container main-content">
+    <section class="hero-wrapper">
+      <div class="hero-text">
+        <h1>
+          Lindungi Keluarga<span>Dari Penipuan Online!</span>
+        </h1>
+        <p>
+          Yuk, ikuti Ujian Ketangkasan Digital! Uji seberapa jeli mata kamu dalam mengenali pesan penipuan (phishing) di internet melalui simulasi kotak masuk pesan yang seru, aman, dan dirancang khusus untuk seluruh keluarga Dusun Teluk Lombok!
+        </p>
+        <button id="start-simulation-btn" class="btn btn-secondary btn-large">
+          🚀 Mulai Simulasi Sekarang
+        </button>
+      </div>
+      <div class="hero-illustration">
+        <div class="hero-image-placeholder">
+          <!-- Playful SVG illustration representing digital family safety -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+            <circle cx="200" cy="200" r="160" fill="url(#grad)" opacity="0.8"/>
+            <defs>
+              <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#bae6fd" />
+                <stop offset="100%" stop-color="#a7f3d0" />
+              </linearGradient>
+            </defs>
+            
+            <!-- Shield -->
+            <g transform="translate(190, 80) scale(0.9)">
+              <path d="M40 0 L80 15 L80 60 C80 90 40 110 40 110 C40 110 0 90 0 60 L0 15 Z" fill="#0284c7" filter="drop-shadow(0 8px 16px rgba(2,132,199,0.3))"/>
+              <path d="M40 10 L70 22 L70 58 C70 80 40 98 40 98 C40 98 10 80 10 58 L10 22 Z" fill="#38bdf8"/>
+              <text x="40" y="65" font-family="'Outfit', sans-serif" font-size="36" font-weight="bold" fill="#ffffff" text-anchor="middle">✔</text>
+            </g>
+            
+            <!-- Mascot -->
+            <g transform="translate(70, 200) scale(0.85)">
+              <rect x="20" y="40" width="80" height="90" rx="30" fill="#0d9488" filter="drop-shadow(0 6px 12px rgba(13,148,152,0.25))"/>
+              <rect x="25" y="45" width="70" height="80" rx="25" fill="#14b8a6"/>
+              <rect x="35" y="55" width="50" height="35" rx="10" fill="#0f172a"/>
+              <circle cx="48" cy="72" r="5" fill="#38bdf8"/>
+              <circle cx="72" cy="72" r="5" fill="#38bdf8"/>
+              <path d="M55 80 Q60 83 65 80" stroke="#38bdf8" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <line x1="60" y1="40" x2="60" y2="20" stroke="#0d9488" stroke-width="6"/>
+              <circle cx="60" cy="18" r="8" fill="#f59e0b"/>
+              <rect x="35" y="130" width="16" height="15" rx="5" fill="#0d9488"/>
+              <rect x="69" y="130" width="16" height="15" rx="5" fill="#0d9488"/>
+            </g>
+            
+            <!-- Family Avatars -->
+            <g transform="translate(190, 210) scale(1)">
+              <circle cx="30" cy="40" r="30" fill="#cbd5e1" stroke="#ffffff" stroke-width="4"/>
+              <text x="30" y="48" font-size="28" text-anchor="middle">👨</text>
+              <circle cx="95" cy="40" r="30" fill="#cbd5e1" stroke="#ffffff" stroke-width="4"/>
+              <text x="95" y="48" font-size="28" text-anchor="middle">👩</text>
+              <circle cx="45" cy="90" r="26" fill="#cbd5e1" stroke="#ffffff" stroke-width="4"/>
+              <text x="45" y="98" font-size="24" text-anchor="middle">👦</text>
+              <circle cx="80" cy="90" r="26" fill="#cbd5e1" stroke="#ffffff" stroke-width="4"/>
+              <text x="80" y="98" font-size="24" text-anchor="middle">👧</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights Features Grid -->
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">🎮</div>
+        <h3>Simulasi Seru</h3>
+        <p>Hadapi berbagai tantangan skenario penipuan online dunia nyata dalam ruang simulasi yang aman.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">📖</div>
+        <h3>Mudah Dipahami</h3>
+        <p>Materi pembelajaran interaktif tanpa istilah membingungkan, sangat cocok untuk seluruh warga desa.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">🛡️</div>
+        <h3>Perisai Keamanan</h3>
+        <p>Pelajari langsung tips praktis bagaimana menjaga keamanan akun dan dana milik seluruh warga.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer id="app-footer"></footer>
+
+  <script>
+    // Initialize/Reset State in LocalStorage before beginning the quiz
+    document.getElementById('start-simulation-btn').addEventListener('click', () => {
+      localStorage.clear(); // Reset all scores
+      
+      const gameState = {
+        score: 0,
+        currentScenarioIndex: 0,
+        hintsUsedCount: 0,
+        currentLevel: 1,
+        answersLog: []
+      };
+      
+      localStorage.setItem('waspada_digital_state', JSON.stringify(gameState));
+      window.location.href = 'pages/tutorial.html';
+    });
+  </script>
+</body>
+</html>
