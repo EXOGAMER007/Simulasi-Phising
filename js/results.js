@@ -29,7 +29,7 @@ function loadStateFromStorage() {
 // RENDER STATS & PREDICATES
 // ==========================================
 function renderResults() {
-  const totalScenarios = SCENARIOS.length;
+  const totalScenarios = state.activeScenarios ? state.activeScenarios.length : 9;
   const totalCorrect = state.answersLog.filter(log => log.isCorrect).length;
   const percentage = totalScenarios > 0 ? Math.round((totalCorrect / totalScenarios) * 100) : 0;
 

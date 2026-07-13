@@ -68,6 +68,10 @@ function setupEventListeners() {
     hideModal('level-transition-modal');
     loadScenario(state.currentScenarioIndex);
   });
+
+  document.getElementById('link-inspection-close-btn').addEventListener('click', () => {
+    hideModal('link-inspection-modal');
+  });
 }
 
 // ==========================================
@@ -105,7 +109,9 @@ function loadScenario(index) {
   if (scenario.actionText) {
     emailBodyHtml += `
       <div class="email-action-link-box">
-        <span class="email-action-button">${scenario.actionText}</span>
+        <button type="button" class="email-action-button" onclick="inspectLink('${scenario.actionUrl}')">
+          ${scenario.actionText}
+        </button>
       </div>
     `;
   }
@@ -313,9 +319,9 @@ function generateShuffledScenariosByLevel() {
   const level2 = SCENARIOS.filter(s => s.level === 2);
   const level3 = SCENARIOS.filter(s => s.level === 3);
 
-  const shuffled1 = shuffleArray(level1);
-  const shuffled2 = shuffleArray(level2);
-  const shuffled3 = shuffleArray(level3);
+  const shuffled1 = shuffleArray(level1).slice(0, 3);
+  const shuffled2 = shuffleArray(level2).slice(0, 3);
+  const shuffled3 = shuffleArray(level3).slice(0, 3);
 
   return [...shuffled1, ...shuffled2, ...shuffled3];
 }
@@ -327,5 +333,13 @@ function shuffleArray(array) {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
+}
+
+// ==========================================
+// LINK INSPECTOR DIALOG
+// ==========================================
+function inspectLink(url) {
+  document.getElementById('inspected-link-url').innerText = url;
+  showModal('link-inspection-modal');
 }
 
