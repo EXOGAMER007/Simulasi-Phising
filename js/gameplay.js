@@ -312,27 +312,18 @@ function createConfettiEffect(parentElement, numPieces = 30) {
 }
 
 // ==========================================
-// DIFFICULTY LEVEL-BASED SHUFFLING HELPERS
+// DIFFICULTY LEVEL-BASED SEQUENTIAL HELPERS
 // ==========================================
 function generateShuffledScenariosByLevel() {
   const level1 = SCENARIOS.filter(s => s.level === 1);
   const level2 = SCENARIOS.filter(s => s.level === 2);
   const level3 = SCENARIOS.filter(s => s.level === 3);
 
-  const shuffled1 = shuffleArray(level1).slice(0, 3);
-  const shuffled2 = shuffleArray(level2).slice(0, 3);
-  const shuffled3 = shuffleArray(level3).slice(0, 3);
+  const sequential1 = level1.slice(0, 3);
+  const sequential2 = level2.slice(0, 3);
+  const sequential3 = level3.slice(0, 3);
 
-  return [...shuffled1, ...shuffled2, ...shuffled3];
-}
-
-function shuffleArray(array) {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
+  return [...sequential1, ...sequential2, ...sequential3];
 }
 
 // ==========================================
