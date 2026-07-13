@@ -234,6 +234,47 @@ a:hover {
   box-shadow: var(--shadow-sm);
 }
 
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-nav-link {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  padding: 8px 14px;
+  border-radius: var(--roundness-pill);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: 1.5px solid transparent;
+}
+
+.header-nav-link:hover {
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  border-color: rgba(2, 132, 199, 0.2);
+  text-decoration: none;
+}
+
+.header-nav-link-primary {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  border-color: var(--color-secondary);
+}
+
+.header-nav-link-primary:hover {
+  background-color: var(--color-secondary-hover);
+  color: #ffffff;
+  border-color: var(--color-secondary-hover);
+}
+
+@media (max-width: 640px) {
+  .header-nav { display: none; }
+}
+
 #app-footer, .app-footer {
   margin-top: auto !important;
   padding: 32px 0;

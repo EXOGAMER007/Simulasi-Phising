@@ -143,3 +143,54 @@
     margin-top: 48px;
   }
 }
+
+/* ==========================================
+   EDU PROMO BANNER
+   ========================================== */
+.edu-promo-banner {
+  margin-top: 48px;
+  margin-bottom: -20px;
+}
+
+.edu-promo-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, var(--color-primary-light), #f0fdf4);
+  border: 1.5px solid rgba(2, 132, 199, 0.2);
+  border-radius: var(--roundness);
+  padding: 20px 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.edu-promo-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 3px 6px rgba(2,132,199,0.15));
+}
+
+.edu-promo-text {
+  flex-grow: 1;
+  font-size: 0.97rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.edu-promo-text strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+}
+
+@media (max-width: 576px) {
+  .edu-promo-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  .edu-promo-inner .btn {
+    width: 100%;
+  }
+}
+
