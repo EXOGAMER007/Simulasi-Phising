@@ -37,13 +37,9 @@ function loadStateFromStorage() {
     };
   }
   
-  // If activeScenarios is not defined yet, generate them based on selected option
+  // If activeScenarios is not defined yet, generate and shuffle them by difficulty level
   if (!state.activeScenarios || state.activeScenarios.length === 0) {
-    if (state.isRandomized) {
-      state.activeScenarios = generateShuffledScenariosByLevel();
-    } else {
-      state.activeScenarios = generateSequentialScenariosByLevel();
-    }
+    state.activeScenarios = generateShuffledScenariosByLevel();
     saveStateToStorage();
   }
   
@@ -316,30 +312,21 @@ function createConfettiEffect(parentElement, numPieces = 30) {
 }
 
 // ==========================================
-// DIFFICULTY LEVEL-BASED SCENARIO HELPERS
+// DIFFICULTY LEVEL-BASED SCENARIOS GENERATOR (ACAK/TERURUT)
 // ==========================================
-function generateSequentialScenariosByLevel() {
-  const level1 = SCENARIOS.filter(s => s.level === 1);
-  const level2 = SCENARIOS.filter(s => s.level === 2);
-  const level3 = SCENARIOS.filter(s => s.level === 3);
-
-  const sequential1 = level1.slice(0, 3);
-  const sequential2 = level2.slice(0, 3);
-  const sequential3 = level3.slice(0, 3);
-
-  return [...sequential1, ...sequential2, ...sequential3];
-}
-
 function generateShuffledScenariosByLevel() {
+  const gameMode = localStorage.getItem('waspada_digital_game_mode') || 'sequential';
+  const isRandom = (gameMode === 'random');
+
   const level1 = SCENARIOS.filter(s => s.level === 1);
   const level2 = SCENARIOS.filter(s => s.level === 2);
   const level3 = SCENARIOS.filter(s => s.level === 3);
 
-  const shuffled1 = shuffleArray(level1).slice(0, 3);
-  const shuffled2 = shuffleArray(level2).slice(0, 3);
-  const shuffled3 = shuffleArray(level3).slice(0, 3);
+  const pool1 = isRandom ? shuffleArray(level1) : level1;
+  const pool2 = isRandom ? shuffleArray(level2) : level2;
+  const pool3 = isRandom ? shuffleArray(level3) : level3;
 
-  return [...shuffled1, ...shuffled2, ...shuffled3];
+  return [...pool1.slice(0, 3), ...pool2.slice(0, 3), ...pool3.slice(0, 3)];
 }
 
 function shuffleArray(array) {
@@ -350,6 +337,7 @@ function shuffleArray(array) {
   }
   return arr;
 }
+
 
 // ==========================================
 // LINK INSPECTOR DIALOG

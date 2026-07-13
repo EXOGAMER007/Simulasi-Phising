@@ -23,18 +23,6 @@
         <p>
           Yuk, ikuti Ujian Ketangkasan Digital! Uji seberapa jeli mata kamu dalam mengenali pesan penipuan (phishing) di internet melalui simulasi kotak masuk pesan yang seru, aman, dan dirancang khusus untuk seluruh keluarga Dusun Teluk Lombok!
         </p>
-        <div class="simulation-options">
-          <p style="font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; color: var(--color-text);">Pengaturan Soal:</p>
-          <div class="toggle-container">
-            <label class="radio-label">
-              <input type="radio" name="randomize_option" value="random" checked> Acak Urutan
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="randomize_option" value="sequential"> Sesuai Urutan
-            </label>
-          </div>
-        </div>
-        <br>
         <button id="start-simulation-btn" class="btn btn-secondary btn-large">
           🚀 Mulai Simulasi Sekarang
         </button>
@@ -115,15 +103,12 @@
     document.getElementById('start-simulation-btn').addEventListener('click', () => {
       localStorage.clear(); // Reset all scores
       
-      const isRandomized = document.querySelector('input[name="randomize_option"]:checked').value === 'random';
-      
       const gameState = {
         score: 0,
         currentScenarioIndex: 0,
         hintsUsedCount: 0,
         currentLevel: 1,
-        answersLog: [],
-        isRandomized: isRandomized
+        answersLog: []
       };
       
       localStorage.setItem('waspada_digital_state', JSON.stringify(gameState));

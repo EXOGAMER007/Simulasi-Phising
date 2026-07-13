@@ -105,6 +105,37 @@
     </div>
   </main>
 
+  <!-- MODAL: PILIH MODE SOAL (ACAK ATAU TERURUT) -->
+  <div id="game-mode-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 600px; padding: 40px; border-color: var(--color-primary);">
+      <span class="modal-icon" style="font-size: 3.5rem; margin-bottom: 8px;">🛡️</span>
+      <h2 class="modal-title" style="color: var(--color-primary); font-size: 1.8rem; margin-bottom: 8px;">Pilih Mode Simulasi</h2>
+      <p style="font-size: 0.95rem; color: var(--color-text-light); margin-bottom: 24px; text-align: center;">
+        Silakan pilih cara Anda ingin menyelesaikan tantangan simulasi keamanan digital ini:
+      </p>
+
+      <div class="mode-options-container">
+        <!-- Option 1: Sequential (Terurut) -->
+        <button id="mode-seq-btn" class="mode-card-btn">
+          <span style="font-size: 2.5rem;">📋</span>
+          <span class="mode-title" style="color: var(--color-primary);">Mode Berurutan</span>
+          <span class="mode-desc">Soal teratur sesuai tingkat kesulitan dari yang termudah. Rekomendasi belajar terstruktur.</span>
+        </button>
+
+        <!-- Option 2: Random (Acak) -->
+        <button id="mode-rand-btn" class="mode-card-btn">
+          <span style="font-size: 2.5rem;">🎲</span>
+          <span class="mode-title" style="color: var(--color-accent);">Mode Acak</span>
+          <span class="mode-desc">Soal diacak secara dinamis di setiap tingkat kesulitan. Uji kemampuan spontan Anda.</span>
+        </button>
+      </div>
+
+      <button id="mode-close-btn" class="btn btn-outline btn-full" style="margin-top: 8px;">
+        Kembali ke Tutorial
+      </button>
+    </div>
+  </div>
+
   <footer id="app-footer"></footer>
 
   <script>
@@ -154,12 +185,41 @@
       }
     });
 
-    function startSimulation() {
-      window.location.href = 'gameplay.html';
+    function showGameModeModal() {
+      document.getElementById('game-mode-modal').classList.add('active');
     }
 
-    finishBtn.addEventListener('click', startSimulation);
-    skipBtn.addEventListener('click', startSimulation);
+    finishBtn.addEventListener('click', showGameModeModal);
+    skipBtn.addEventListener('click', showGameModeModal);
+
+    // Game mode selections
+    document.getElementById('mode-seq-btn').addEventListener('click', () => {
+      localStorage.setItem('waspada_digital_game_mode', 'sequential');
+      resetActiveScenarios();
+      window.location.href = 'gameplay.html';
+    });
+
+    document.getElementById('mode-rand-btn').addEventListener('click', () => {
+      localStorage.setItem('waspada_digital_game_mode', 'random');
+      resetActiveScenarios();
+      window.location.href = 'gameplay.html';
+    });
+
+    document.getElementById('mode-close-btn').addEventListener('click', () => {
+      document.getElementById('game-mode-modal').classList.remove('active');
+    });
+
+    function resetActiveScenarios() {
+      const freshState = {
+        score: 0,
+        currentScenarioIndex: 0,
+        hintsUsedCount: 0,
+        currentLevel: 1,
+        answersLog: [],
+        activeScenarios: null
+      };
+      localStorage.setItem('waspada_digital_state', JSON.stringify(freshState));
+    }
   </script>
 </body>
 </html>
