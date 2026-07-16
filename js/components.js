@@ -9,9 +9,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Render Shared Header
   const headerPlaceholder = document.getElementById("app-header");
   if (headerPlaceholder) {
-    const isEdukasiPage = window.location.pathname.includes("edukasi.html");
+    const path = window.location.pathname;
+    const isEdukasiPage = path.includes("edukasi.html");
+    const isTutorialPage = path.includes("tutorial.html");
+    const isGameplayPage = path.includes("gameplay.html");
+    const isResultsPage = path.includes("results.html");
+    
+    // Sembunyikan navigasi jika pengguna sedang berada di dalam rangkaian simulasi
+    const hideNav = isTutorialPage || isGameplayPage || isResultsPage;
+
     const simClass = isEdukasiPage ? "header-nav-link" : "header-nav-link header-nav-link-primary";
     const eduClass = isEdukasiPage ? "header-nav-link header-nav-link-primary" : "header-nav-link";
+
+    let navHtml = '';
+    if (!hideNav) {
+      navHtml = `
+        <nav class="header-nav">
+          <a href="${prefix}index.html" class="${simClass}">🚀 Mulai Simulasi</a>
+          <a href="${prefix}pages/edukasi.html" class="${eduClass}">📖 Kenali Phishing</a>
+        </nav>
+      `;
+    }
 
     headerPlaceholder.className = "app-header";
     headerPlaceholder.innerHTML = `
@@ -19,10 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <a href="${prefix}index.html" class="logo">
           <span class="logo-shield">🛡️</span> Waspada<span>Digital</span>
         </a>
-        <nav class="header-nav">
-          <a href="${prefix}index.html" class="${simClass}">🚀 Mulai Simulasi</a>
-          <a href="${prefix}pages/edukasi.html" class="${eduClass}">📖 Kenali Phishing</a>
-        </nav>
+        ${navHtml}
         <div class="score-tracker">
           🌟 <span id="coins-score">0</span> Koin
         </div>
