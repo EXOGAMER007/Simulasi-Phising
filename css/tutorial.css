@@ -158,6 +158,24 @@
   }
 }
 
+@media (max-width: 576px) {
+  .main-content {
+    padding: 24px 16px;
+  }
+  .mode-options-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .tutorial-navigation {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tutorial-navigation .btn {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+}
+
 /* ==========================================
    GAME MODE SELECT DIALOG STYLING
    ========================================== */

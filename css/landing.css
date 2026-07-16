@@ -184,6 +184,9 @@
 }
 
 @media (max-width: 576px) {
+  .main-content {
+    padding: 32px 16px;
+  }
   .edu-promo-inner {
     flex-direction: column;
     text-align: center;
@@ -191,6 +194,9 @@
   }
   .edu-promo-inner .btn {
     width: 100%;
+  }
+  .hero-text h1 {
+    font-size: 1.85rem;
   }
 }
 
