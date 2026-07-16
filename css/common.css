@@ -271,6 +271,15 @@ a:hover {
   border-color: var(--color-secondary-hover);
 }
 
+.header-nav-link:active,
+.header-nav-link-primary:active {
+  background-color: var(--color-secondary) !important;
+  color: #ffffff !important;
+  border-color: var(--color-secondary) !important;
+  transform: scale(0.95);
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
 @media (max-width: 768px) {
   .nav-container {
     flex-wrap: wrap;

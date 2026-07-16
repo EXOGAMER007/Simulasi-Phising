@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <span class="logo-shield">🛡️</span> Waspada<span>Digital</span>
         </a>
         <nav class="header-nav">
-        <a href="${prefix}index.html" class="header-nav-link header-nav-link-primary">🚀 Mulai Simulasi</a>
+        <a href="${prefix}pages/tutorial.html" class="header-nav-link header-nav-link-primary">🚀 Mulai Simulasi</a>
           <a href="${prefix}pages/edukasi.html" class="header-nav-link">📖 Kenali Phishing</a>
         </nav>
         <div class="score-tracker">
