@@ -271,8 +271,18 @@ a:hover {
   border-color: var(--color-secondary-hover);
 }
 
-@media (max-width: 640px) {
-  .header-nav { display: none; }
+@media (max-width: 768px) {
+  .nav-container {
+    flex-wrap: wrap;
+    gap: 16px 12px;
+  }
+  .header-nav { 
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    border-top: 1px solid var(--border-color-light);
+    padding-top: 12px;
+  }
 }
 
 #app-footer, .app-footer {
