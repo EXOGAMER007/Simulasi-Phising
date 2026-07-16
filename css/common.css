@@ -410,6 +410,18 @@ a:hover {
   animation: zoomIn var(--transition-bounce);
 }
 
+@media (max-width: 576px) {
+  .modal-overlay {
+    padding: 16px;
+  }
+  .modal-card {
+    padding: 24px 20px;
+  }
+  .card {
+    padding: 24px 20px;
+  }
+}
+
 /* Confetti overlay */
 .confetti-canvas {
   position: absolute;
