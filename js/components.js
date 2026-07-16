@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Render Shared Header
   const headerPlaceholder = document.getElementById("app-header");
   if (headerPlaceholder) {
+    const isEdukasiPage = window.location.pathname.includes("edukasi.html");
+    const simClass = isEdukasiPage ? "header-nav-link" : "header-nav-link header-nav-link-primary";
+    const eduClass = isEdukasiPage ? "header-nav-link header-nav-link-primary" : "header-nav-link";
+
     headerPlaceholder.className = "app-header";
     headerPlaceholder.innerHTML = `
       <div class="container nav-container">
@@ -16,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <span class="logo-shield">🛡️</span> Waspada<span>Digital</span>
         </a>
         <nav class="header-nav">
-        <a href="${prefix}pages/tutorial.html" class="header-nav-link header-nav-link-primary">🚀 Mulai Simulasi</a>
-          <a href="${prefix}pages/edukasi.html" class="header-nav-link">📖 Kenali Phishing</a>
+          <a href="${prefix}index.html" class="${simClass}">🚀 Mulai Simulasi</a>
+          <a href="${prefix}pages/edukasi.html" class="${eduClass}">📖 Kenali Phishing</a>
         </nav>
         <div class="score-tracker">
           🌟 <span id="coins-score">0</span> Koin
