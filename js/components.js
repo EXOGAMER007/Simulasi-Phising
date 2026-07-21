@@ -69,6 +69,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 3. Keep Coin Tracker Sync (from localStorage)
   updateCoinsTrackerHeader();
+
+  // 4. Load Twemoji and parse all emojis into SVGs
+  const twemojiScript = document.createElement('script');
+  twemojiScript.src = "https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js";
+  twemojiScript.crossOrigin = "anonymous";
+  twemojiScript.onload = () => {
+    twemoji.parse(document.body, { 
+      folder: 'svg', 
+      ext: '.svg'
+    });
+  };
+  document.head.appendChild(twemojiScript);
 });
 
 // Sync Coins Score from LocalStorage globally on load
